@@ -112,3 +112,47 @@ aside { display: flex; flex-direction: column; gap: 22px; min-width: 0; }
 .empty strong { color: var(--ink); font-family: var(--f-display); font-size: 17px; }
 .note { font-size: 13px; color: var(--muted); background: var(--signal-soft); border-radius: 8px; padding: 10px 12px; }
 footer { color: var(--muted); font-size: 12.5px; border-top: 1px solid var(--line); padding-top: 14px; }
+
+/* ---------- Reader ---------- */
+.reader { max-width: 1100px; }
+.rhead { display: flex; flex-direction: column; gap: 8px; border-bottom: 1px solid var(--line); padding-bottom: 18px; }
+.back { font-size: 14px; text-decoration: none; }
+.rtitle { font-size: clamp(22px, 3.4vw, 30px); font-weight: 700; max-width: 40ch; }
+.rtitle-th { font-family: var(--f-display); font-size: clamp(17px, 2.4vw, 21px); font-weight: 500; color: var(--accent); max-width: 52ch; }
+.rtitle-en { font-size: 14.5px; color: var(--muted); max-width: 70ch; }
+.rlinks { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 14px; }
+.toolbar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; display: flex; flex-wrap: wrap; gap: 10px 14px; align-items: center;
+  background: var(--bg); padding-block: 10px; border-bottom: 1px solid var(--line); }
+.seg { display: inline-flex; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; background: var(--surface); }
+.seg button { border: 0; background: transparent; padding: 6px 14px; font-size: 14px; }
+.seg button + button { border-left: 1px solid var(--line); }
+.seg button[aria-pressed="true"] { background: var(--ink); color: var(--bg); }
+.seg button:disabled { opacity: .4; cursor: default; }
+.tprog { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-left: auto; font-size: 13px; color: var(--muted); }
+.tprog .btn { max-width: 340px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.tnote { margin-left: auto; font-size: 13px; color: var(--muted); }
+.rgrid { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 36px; align-items: start; }
+@media (max-width: 1000px) { .rgrid { grid-template-columns: minmax(0, 1fr); } .toc { display: none !important; } }
+.toc { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 74px); display: flex; flex-direction: column; gap: 2px; max-height: calc(100vh - 110px); overflow: auto; }
+.tocitem { display: flex; gap: 8px; align-items: baseline; text-align: left; border: 0; background: none; padding: 5px 4px; font-size: 13.5px; color: var(--muted); border-radius: 4px; }
+.tocitem:hover { color: var(--ink); background: var(--surface); }
+.tdot { width: 7px; height: 7px; border-radius: 50%; flex: none; background: var(--line); transform: translateY(-1px); }
+.tdot.done { background: var(--cat-research); } .tdot.busy { background: var(--signal); } .tdot.error { background: var(--cat-safety); }
+.rbody { min-width: 0; max-width: 72ch; font-size: var(--read-size, 17px); line-height: 1.75; display: flex; flex-direction: column; gap: 28px; }
+.rsec { display: flex; flex-direction: column; gap: 14px; scroll-margin-top: 80px; }
+.rsec-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 8px; border-bottom: 1px solid var(--line); padding-bottom: 6px; }
+.rsec-head h2 { font-size: 1.25em; display: flex; flex-direction: column; gap: 2px; }
+.h-th { font-size: .78em; font-weight: 500; color: var(--accent); }
+.rbody p, .rbody h3 { margin: 0; overflow-wrap: anywhere; }
+.rbody h3 { font-family: var(--f-display); font-size: 1.05em; }
+.pair { display: flex; flex-direction: column; gap: 6px; }
+.pair .orig { color: var(--muted); font-size: .9em; }
+.pair.h .orig { color: var(--ink); }
+.trans { border-left: 3px solid var(--accent); padding-left: 12px; color: var(--ink); }
+.trans.wait { height: 1.4em; border-left-color: var(--line); background: linear-gradient(90deg, var(--line) 0%, transparent 70%); border-radius: 0 4px 4px 0; opacity: .6; }
+@media (prefers-reduced-motion: no-preference) { .trans.wait { animation: p 1.6s ease-in-out infinite; } }
+.th-only { color: var(--ink); }
+.orig.pending { color: var(--muted); opacity: .7; }
+.btn.primary-link { text-decoration: none; display: inline-flex; align-items: center; }
+.tlink { color: inherit; text-decoration: none; }
+.tlink:hover { color: var(--accent); text-decoration: underline; }
