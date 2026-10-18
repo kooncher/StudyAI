@@ -1,0 +1,50 @@
+// ข้อมูลตัวอย่างสำหรับดูหน้าตาบนเครื่องตัวเองโดยไม่ต้องต่ออินเทอร์เน็ต
+// เปิดใช้ด้วย MOCK_FEEDS=1 npm run dev  (บน Vercel ไม่ต้องตั้งค่านี้)
+import type { FeedData } from "./types";
+
+export const MOCK: FeedData = {
+  fetchedAt: "2026-10-18T13:30:00Z",
+  sources: [
+    { name: "arXiv", ok: true, count: 6 },
+    { name: "TechCrunch AI", ok: true, count: 3 },
+    { name: "The Verge AI", ok: true, count: 2 },
+    { name: "MIT Technology Review", ok: true, count: 1 },
+    { name: "Google AI Blog", ok: true, count: 1 },
+    { name: "Hugging Face Blog", ok: false, count: 0 },
+    { name: "Blognone", ok: true, count: 1 },
+  ],
+  news: [
+    { id: "n1", kind: "news", lang: "en", source: "TechCrunch AI", url: "https://techcrunch.com/", date: "2026-10-18T09:10:00Z", category: "model", course: "Generative AI",
+      title: "Google rolls out Gemini 4 Argon more widely with steep cached-input discounts", summary: "The model is priced at $2 per million input tokens and $10 per million output tokens, with cached inputs discounted by 95%." },
+    { id: "n2", kind: "news", lang: "en", source: "The Verge AI", url: "https://www.theverge.com/", date: "2026-10-18T04:20:00Z", category: "model", course: "Artificial Intelligence",
+      title: "ChatGPT Pro can now split a big task across parallel agents", summary: "OpenAI says Pro responses are faster, tool use is improved, and several agents can now work on one request at the same time." },
+    { id: "n3", kind: "news", lang: "th", source: "Blognone", url: "https://www.blognone.com/", date: "2026-10-17T11:00:00Z", category: "policy", course: "Research & Ethics",
+      title: "สำนักงาน AI ของ EU ขอข้อมูลจาก OpenAI และ Anthropic เรื่องเหตุการณ์ agent", summary: "คณะกรรมาธิการยุโรปเผยว่าการเปิดเผยข้อมูลโดยสมัครใจยังไม่พอ จึงส่งคำขอข้อมูลเพิ่มเติม" },
+    { id: "n4", kind: "news", lang: "en", source: "MIT Technology Review", url: "https://www.technologyreview.com/", date: "2026-10-17T08:00:00Z", category: "safety", course: "Research & Ethics",
+      title: "More than 400 scientists sign letter calling for an emergency brake on AI models", summary: "Signatories including Geoffrey Hinton and Yoshua Bengio ask for strict containment and a body to track AI failures." },
+    { id: "n5", kind: "news", lang: "en", source: "TechCrunch AI", url: "https://techcrunch.com/", date: "2026-10-16T15:30:00Z", category: "business", course: "Cloud Computing",
+      title: "AI chip stocks shed $1 trillion in a week", summary: "SK Hynix fell over 10% in Seoul and ASML slid 6.6% as investors questioned the pace of AI infrastructure spending." },
+    { id: "n6", kind: "news", lang: "en", source: "Google AI Blog", url: "https://blog.google/technology/ai/", date: "2026-10-16T02:00:00Z", category: "research", course: "Natural Language Processing",
+      title: "EmbeddingGemma 2 brings multimodal semantic search to the edge", summary: "A small embedding model designed to run on-device for search across text and images." },
+  ],
+  papers: [
+    { id: "p1", kind: "paper", arxivId: "2610.22200", url: "https://arxiv.org/abs/2610.22200", date: "2026-10-15T17:00:00Z", primaryCategory: "cs.AI", course: "Artificial Intelligence",
+      authors: ["A. Researcher", "B. Researcher", "C. Researcher", "D. Researcher", "E. Researcher"],
+      title: "OpenGCUA: Toward a Fully Open Stack for Generalist Computer Use", summary: "We present an open computer-use agent that operates through both visual screens and programmatic interfaces, with open data, models and evaluation." },
+    { id: "p2", kind: "paper", arxivId: "2610.22341", url: "https://arxiv.org/abs/2610.22341", date: "2026-10-15T12:00:00Z", primaryCategory: "cs.CV", course: "Computer Vision",
+      authors: ["F. Author", "G. Author"],
+      title: "3DCodeVerse: Exploring 3D Worlds as Code", summary: "Datasets and automated checks for generating editable, verifiable 3D content as executable code." },
+    { id: "p3", kind: "paper", arxivId: "2610.20571", url: "https://arxiv.org/abs/2610.20571", date: "2026-10-14T17:00:00Z", primaryCategory: "cs.CV", course: "Computer Vision",
+      authors: ["H. Author", "I. Author", "J. Author"],
+      title: "Any Time, Any Space: A World-State-Centric Framework for Agentic Video Generation", summary: "Keeps long generated videos consistent by turning screenplays into shot requests and drawing on stored scene and event memory." },
+    { id: "p4", kind: "paper", arxivId: "2610.17953", url: "https://arxiv.org/abs/2610.17953", date: "2026-10-13T17:00:00Z", primaryCategory: "cs.CL", course: "Natural Language Processing",
+      authors: ["K. Author", "L. Author"],
+      title: "Agent-Reflex: Teaching Language Agents to Act Reflectively", summary: "Trains agents to notice and recover from noisy tool outputs and user corrections." },
+    { id: "p5", kind: "paper", arxivId: "2610.17439", url: "https://arxiv.org/abs/2610.17439", date: "2026-10-12T17:00:00Z", primaryCategory: "cs.CL", course: "Natural Language Processing",
+      authors: ["Zhihua Liu", "Kurt Butler", "Damian Machlanski"],
+      title: "Large Language Models Extend Known Research But Do Not Create New Research Directions", summary: "We embed 26.9 million human papers and about 524,000 LLM hypotheses in a shared space and introduce an orthogonal novelty score." },
+    { id: "p6", kind: "paper", arxivId: "2609.18063", url: "https://arxiv.org/abs/2609.18063", date: "2026-09-16T17:00:00Z", primaryCategory: "cs.LG", course: "Deep Learning",
+      authors: ["M. Author", "N. Author"],
+      title: "The Other Half of the Memory Wall: Serving 35B MoEs from SSD with Trained Routing Prediction", summary: "Predicts which experts a mixture-of-experts model will need and prefetches them from SSD to run large models on consumer hardware." },
+  ],
+};
