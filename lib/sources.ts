@@ -88,7 +88,7 @@ export function parseFeed(xml: string, feed: (typeof NEWS_FEEDS)[number]): NewsI
 }
 
 // ---------- arXiv API (Atom) ----------
-export function parseArxiv(xml: string): PaperItem[] {
+export function parseArxiv(xml: string, clipLen = 600): PaperItem[] {
   const doc = parser.parse(xml);
   return asArray(doc?.feed?.entry).map((e: any) => {
     const absUrl = text(e.id);
@@ -101,7 +101,7 @@ export function parseArxiv(xml: string): PaperItem[] {
       kind: "paper" as const,
       arxivId,
       title,
-      summary: clip(summary, 600),
+      summary: clip(summary, clipLen),
       url: `https://arxiv.org/abs/${arxivId}`,
       authors: asArray(e.author).map((a: any) => text(a.name)).filter(Boolean),
       primaryCategory: primary,
