@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import type { Category, Course, FeedData, FeedItem, NewsItem, PaperItem } from "@/lib/types";
 import QuizCard from "./QuizCard";
@@ -255,9 +254,6 @@ export default function Dashboard({ data, aiEnabled }: { data: FeedData; aiEnabl
             {failed.length > 0 && <div className="note">บางแหล่งไม่ตอบในรอบนี้ ระบบจะลองใหม่อัตโนมัติในรอบถัดไป</div>}
           </div>
 
-          {!aiEnabled && (
-            <div className="note">ยังไม่ได้ใส่ ANTHROPIC_API_KEY ปุ่มสรุปไทยและการแปลเปเปอร์จึงยังใช้ไม่ได้ ดูวิธีเปิดใน README</div>
-          )}
         </aside>
       </div>
 
@@ -280,7 +276,7 @@ function Card(props: {
         <span>{isNews ? (n as NewsItem).source : `arXiv ${(n as PaperItem).arxivId}`}</span>
         {isNew(n.date) && <span className="new">ใหม่</span>}
       </div>
-      <h3>{isNews ? n.title : <Link href={`/paper/${(n as PaperItem).arxivId}`} className="tlink">{n.title}</Link>}</h3>
+      <h3>{n.title}</h3>
       {!isNews && <div className="authors">{(n as PaperItem).authors.slice(0, 4).join(", ")}{(n as PaperItem).authors.length > 4 ? " และคณะ" : ""}</div>}
       {n.summary && <p>{n.summary}</p>}
       <div className="link">เชื่อมกับวิชา <span className="course">{n.course}</span></div>
@@ -288,7 +284,6 @@ function Card(props: {
       <div className="actions">
         <button className="btn" aria-pressed={read} onClick={props.onRead}>{read ? "อ่านแล้ว ✓" : "ทำเครื่องหมายว่าอ่านแล้ว"}</button>
         <button className="btn" aria-pressed={saved} onClick={props.onSave}>{saved ? "บันทึกแล้ว" : "บันทึก"}</button>
-        {!isNews && <Link className="btn primary primary-link" href={`/paper/${(n as PaperItem).arxivId}`}>เปิดอ่าน + แปลไทย</Link>}
         {aiEnabled && (
           <button className={`btn${isNews ? " primary" : ""}`} disabled={busy} onClick={props.onExplain}>
             {busy ? "กำลังสรุป…" : deep ? "สรุปใหม่" : isNews ? "สรุปไทย + ประเด็นสำคัญ" : "อธิบายเชิงลึก"}
